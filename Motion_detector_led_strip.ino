@@ -8,7 +8,7 @@
 #define POTENTIOMETER_PIN A7
 #define DEFAULT_STACK_SIZE 256
 
-#define DEBOUNCE_ON_MS 800
+#define DEBOUNCE_ON_MS 2000
 #define DEBOUNCE_OFF_MS 10000
 
 #define MAX_BRIGHTNESS_PERCENTAGE .50
@@ -56,7 +56,7 @@ void LED_loop(void *pvParameters) {
   unsigned long lastMotionDetected, debounceOnStartMs;
   while (1) {
     dial = 1000 - analogRead(POTENTIOMETER_PIN);
-    brightness = max((MAX_BRIGHTNESS_PERCENTAGE * 255.) * ((double)dial / 1000.0), 10);
+    brightness = max((MAX_BRIGHTNESS_PERCENTAGE * 255.) * ((double)dial / 1000.0), 5);
 
     FastLED.setBrightness(brightness);
     currentColor.toLowerCase();
